@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products - PlugBox</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function addToCart(product, price) {
+            cart.push({ name: product, price: price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart-items");
+            const totalPrice = document.getElementById("cart-total");
+            const orderField = document.getElementById("order-details");
+            cartList.innerHTML = "";
+            let total = 0;
+            let orderSummary = "";
+            cart.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = item.name + " - €" + item.price.toFixed(2);
+                cartList.appendChild(li);
+                total += item.price;
+                orderSummary += item.name + " - €" + item.price.toFixed(2) + "\n";
+            });
+            totalPrice.textContent = "Total: €" + total.toFixed(2);
+            orderField.value = orderSummary + "\nTotal: €" + total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="PlugBox Logo">
+        <h1>PlugBox</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <h2>Produsele noastre</h2>
+
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150?text=Cablu+USB-C+iPhone" alt="Cablu USB iPhone">
+            <h3>Cablu USB de încărcare iPhone (USB-C și clasic)</h3>
+            <p>Compatibil cu toate modelele. Preț: 2,50€</p>
+            <button onclick="addToCart('Cablu USB iPhone', 2.5)">Adaugă în coș</button>
+        </div>
+
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150?text=Casti+iPhone+si+USB-C" alt="Căști iPhone">
+            <h3>Căști cu mufă AUX de iPhone și USB-C</h3>
+            <p>Sunet clar, ideale pentru muzică. Preț: 10,00€</p>
+            <button onclick="addToCart('Căști iPhone/USB-C', 10.0)">Adaugă în coș</button>
+        </div>
+
+        <div class="product">
+            <img src="https://via.placeholder.com/200x150?text=Cap+Incarcator" alt="Cap de încărcător">
+            <h3>Cap de încărcător universal</h3>
+            <p>Rapid și sigur pentru toate dispozitivele. Preț: 10,00€</p>
+            <button onclick="addToCart('Cap încărcător', 10.0)">Adaugă în coș</button>
+        </div>
+
+        <h3>Coșul tău</h3>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Total: €0.00</p>
+
+        <h3>Finalizează comanda</h3>
+        <form action="https://formsubmit.co/danielmiron890@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="https://dmiron23-star.github.io/PlugBox/thank-you.html">
+            <input type="text" name="name" placeholder="Numele tău" required><br>
+            <input type="email" name="email" placeholder="Emailul tău" required><br>
+            <textarea id="order-details" name="order" placeholder="Detalii comandă" rows="5" readonly></textarea><br>
+            <button type="submit">Trimite comanda</button>
+        </form>
+    </main>
+    <footer>© 2025 PlugBox</footer>
+</body>
+</html>
