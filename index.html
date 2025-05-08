@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlugBox</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function changeLanguage(lang) {
+            window.location.href = lang + ".html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="PlugBox Logo">
+        <h1>PlugBox</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <h2>Welcome to PlugBox</h2>
+        <p>Your destination for quality tech accessories. Choose your language:</p>
+        <button onclick="changeLanguage('ro')">Română</button>
+        <button onclick="changeLanguage('de')">Deutsch</button>
+        <button onclick="changeLanguage('en')">English</button>
+    </main>
+    <footer>© 2025 PlugBox</footer>
+</body>
+</html>
